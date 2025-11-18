@@ -1,0 +1,53 @@
+# 依赖目录
+node_modules/
+
+# 日志文件
+*.log
+logs/*.log
+server.log
+server_output.log
+
+# 数据库文件
+*.db
+*.sqlite
+*.sqlite3
+
+# SSL证书
+ssl/*.crt
+ssl/*.key
+
+# 运行时文件
+*.pid
+.DS_Store
+Thumbs.db
+
+# 环境配置文件
+.env
+.env.local
+.env.*.local
+
+# 临时文件
+*.tmp
+*.temp
+
+# IDE配置
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# 测试覆盖率报告
+coverage/
+.nyc_output/
+
+# 构建输出
+dist/
+build/
+
+# 缓存目录
+.cache/
+.parcel-cache/
+
+# 其他
+*.tgz
+*.tar.gz
