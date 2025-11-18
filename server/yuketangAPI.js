@@ -134,7 +134,7 @@ class YuketangAPI {
                             // 发送pc/web_login请求获取Cookie
                             if (message.UserID && message.Auth) {
                                 console.log(`准备发送pc/web_login请求: UserID=${message.UserID}, Auth=${message.Auth}`);
-                                this.sendPcWebLogin(message.UserID, message.Auth);
+                                this.sendPcWebLogin(message.UserID, message.Auth, message);
                             } else {
                                 console.error('缺少UserID或Auth参数');
                                 writeLog('缺少UserID或Auth参数');
@@ -172,7 +172,7 @@ class YuketangAPI {
     }
 
     // 发送pc/web_login请求
-    async sendPcWebLogin(userId, auth) {
+    async sendPcWebLogin(userId, auth, loginMessage = null) {
         try {
             // 使用原生axios发送请求，确保正确的格式
             const directAxios = require('axios');
@@ -224,7 +224,9 @@ class YuketangAPI {
                 // 触发登录成功事件
                 this.triggerLoginSuccess({
                     UserID: userId,
-                    Name: '张鸿健' // 从之前的消息中获取
+                    Name: loginMessage ? loginMessage.Name : '未知用户',
+                    School: loginMessage ? loginMessage.School : '',
+                    Department: loginMessage ? loginMessage.Department : ''
                 }, true, cookies, response.data);
             }
         } catch (error) {
